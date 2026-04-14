@@ -15,13 +15,13 @@ app.set("views", path.join(__dirname, 'views'));
 // render the dynamic content in the browser
 // root route
 app.get('/', (req, res) => {
-    res.render("index");
+    res.render('index');
 })
 
 
 appget('/random',(res,req)=>{
-    res.render("random");
-    
+    let number = Math.floor(Math.random()*100);
+    res.render('random',number);
 })
 
 
