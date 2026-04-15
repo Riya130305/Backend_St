@@ -5,9 +5,12 @@ const mongoose = require('mongoose');
 // actual connection
 
 async function connectDb(){
-    // wait for the connection
-    await mongoose.connect('mongodb+srv://backend_13:6KSs1bc9SA2NkCDz@cluster0.z6pwmoe.mongodb.net/riya');
-    console.log("Connected to the DB");
+    try {
+        await mongoose.connect('mongodb+srv://DB_13:bV0et1EJcnCdIfvc@cluster0.z6pwmoe.mongodb.net/riya');
+        console.log("Connected to the DB");
+    } catch (error) {
+        console.error("DB Connection Error:", error);
+        process.exit(1); // Exit on failure
+    }
 }
-
-module.exports=connectDb;
+module.exports = connectDb;
