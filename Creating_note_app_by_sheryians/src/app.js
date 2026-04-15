@@ -1,4 +1,4 @@
-// Server crate krne ke liye use hota haii
+// Server create krne ke liye use hota haii
 
 const express =  require('express');
 const app = express();
@@ -29,6 +29,7 @@ app.get('/notes',(req,res)=>{
 })
 
 // Delete method
+// :index [:--> colon is uesd to tell that this is the param]
 app.delete('/notes/:index',(req,res)=>{
     const index= req.params.index;
     if(index > notes.length){
@@ -44,6 +45,18 @@ app.delete('/notes/:index',(req,res)=>{
         "notes":notes
     })
     // console.log(index);
+})
+
+// patch method
+app.patch('/notes/:index',(req,res)=>{
+    const index= req.params.index;
+    discripton= req.body.discripton;
+    notes[index].discripton=discripton;
+
+    res.status(200).json({
+        "message":"Update the discripton"
+    })
+
 })
 
 
