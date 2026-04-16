@@ -3,7 +3,7 @@
 const app = require('./src/app');
 const connectDb= require('./src/db/db');
 
-app.listen(8080,()=>{
+app.listen(8081,()=>{
     console.log("Sever connected to 8080");
 })
 
