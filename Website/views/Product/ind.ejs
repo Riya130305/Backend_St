@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>My App</title>
+    </head>
+    <body>
+        <h1>Products</h1>
+        <div class="products">
+            <% products.forEach(product => { %>
+                <div class="product">
+                    <img src="<%= product.img %>" alt="<%= product.name %>">
+                    <h2><%= product.name %></h2>
+                    <p><%= product.description %></p>
+                </div>
+            <% }); %>
+        </div>
+    </body>
+</html>
