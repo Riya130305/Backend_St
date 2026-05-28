@@ -4,6 +4,12 @@ const path=require('path');
 const mongoose= require('mongoose');
 const seedDB= require('./seed');
 const ProductRoute = require('./route/product');
+const ejsMate = require('ejs-mate');
+const methodOverride =  require('method-override');
+
+// to use the method override
+app.use(methodOverride('_method'));
+
 mongoose.connect("mongodb://127.0.0.1:27017/blogApp")
 .then(()=>{
     console.log('Connected to MongoDB');
@@ -14,6 +20,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/blogApp")
 
 // To convert the data into json format
 app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 
 // Seed file runs only onces when we start the server and it will add the data to the database and the comment out this line after the first run to avoid adding the same data again and again to the database
 //seedDB();
@@ -21,6 +28,7 @@ app.use(express.json());
 //*************Important As product har request per chlna chahiye to isliye humne product route ko use kiya hai
 app.use(ProductRoute);
 
+app.engine('ejs', ejsMate);
 app.set('view engine', 'ejs');
 app.set('views',path.join(__dirname,'views'));
 app.use(express.static(path.join(__dirname,'public')));

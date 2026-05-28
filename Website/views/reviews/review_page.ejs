@@ -1,0 +1,20 @@
+<%include ../partials/navbar.ejs%>
+<div class="container mt-4">
+  <div class="row g-4">
+    <div class="col-md-6 offset-md-3">
+      <h2>Reviews for <%= foundProduct.name %></h2>
+      <% if (reviews.length === 0) { %>
+        <p>No reviews yet. Be the first to review this product!</p>
+      <% } else { %>
+        <% reviews.forEach((review) => { %>
+          <div class="card mb-3">
+            <div class="card-body">
+              <h5 class="card-title"><%= review.author %></h5>
+              <p class="card-text"><%= review.content %></p>
+              <p class="card-text"><small class="text-muted">Rating: <%= review.rating %>/5</small></p>
+            </div>
+          </div>
+        <% }) %>
+      <% } %>
+    </div>
+  </div>
